@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#08182a" />
+  <meta name="description" content="Flores amarillas para Fer" />
+  <title>Flores amarillas para Fer 🌻</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app" aria-live="polite">
+    <div class="sky-stars" id="skyStars" aria-hidden="true"></div>
+
+    <section class="hero" id="hero">
+      <div class="moon" aria-hidden="true"></div>
+      <div class="hero-card glass">
+        <p class="eyebrow">21 · 09</p>
+        <h1>Para Fer</h1>
+        <p class="lead">No podía dejar que llegara el 21 sin darte flores amarillas…</p>
+        <button class="primary" id="startBtn">pero estas tenían que ser un poquito más mías 🌻</button>
+      </div>
+      <p class="hint">Hazlo despacito. Hay detalles escondidos ✨</p>
+    </section>
+
+    <section class="garden hidden" id="garden">
+      <div class="section-card glass intro-card">
+        <p class="eyebrow">Un ramo hecho por mí.</p>
+        <h2>Para mi mujer hecha de estrellas.</h2>
+        <p>Porque desde que llegaste, mis días tienen un poquito más de luz, calorcito y paz.</p>
+      </div>
+
+      <div class="bouquet-wrap" aria-label="Ramo virtual silvestre de flores amarillas">
+        <div class="bouquet-glow" aria-hidden="true"></div>
+        <div class="flowers" id="flowers"></div>
+        <div class="ribbon" aria-hidden="true"><span></span></div>
+      </div>
+
+      <div class="actions glass compact">
+        <button class="secondary" id="starBtn">Toca una estrella ✨</button>
+        <button class="secondary" id="kissBtn">37 besos</button>
+      </div>
+
+      <div class="message glass compact hidden" id="messageBox" role="status"></div>
+
+      <button class="final-btn" id="memoriesBtn">Seguir 💛</button>
+    </section>
+
+    <section class="memories hidden" id="memories">
+      <div class="section-card glass">
+        <p class="eyebrow">Un poquito de nosotros</p>
+        <h2>Mis días favoritos también tienen tu cara.</h2>
+        <p class="soft">Guardé aquí tres pedacitos de nosotros.</p>
+      </div>
+
+      <div class="photo-grid">
+        <figure class="polaroid tilt-left">
+          <img src="fotos/foto-1.jpg" alt="Foto de Dani y Fer 1" loading="lazy" />
+          <figcaption id="caption1">Donde todo empezó a sentirse especial.</figcaption>
+        </figure>
+        <figure class="polaroid tilt-right">
+          <img src="fotos/foto-2.jpg" alt="Foto de Dani y Fer 2" loading="lazy" />
+          <figcaption id="caption2">Contigo, hasta lo cotidiano se siente bonito.</figcaption>
+        </figure>
+        <figure class="polaroid tilt-left-small">
+          <img src="fotos/foto-3.jpg" alt="Foto de Dani y Fer 3" loading="lazy" />
+          <figcaption id="caption3">Y quiero seguir haciendo recuerdos contigo.</figcaption>
+        </figure>
+      </div>
+
+      <button class="final-btn" id="poemBtn">Hay algo que escribí para ti</button>
+    </section>
+
+    <section class="poem-section hidden" id="poemSection">
+      <article class="poem-card glass">
+        <p class="eyebrow">Para Fer</p>
+        <h2>Eres la mujer hecha de estrellas.</h2>
+        <div class="poem" id="poemText">
+          <p>Unos pinceles plasmaron la belleza de una noche estrellada en un lienzo; un viaje me mostró la belleza de la vida en ti.</p>
+          <p>Dicen que la vida es un viaje, y yo puedo decir que uno cambió la mía.</p>
+          <p>Curiosos son los caminos que recorremos: caóticos, impredecibles, y aun así hermosos.</p>
+          <p>Y por raro que parezca, me atrevería a caminar por cualquiera de ellos, siempre y cuando no me sueltes de la mano.</p>
+        </div>
+        <p class="signature">— Dani</p>
+      </article>
+
+      <button class="final-btn" id="finalBtn">Una última cosita</button>
+    </section>
+
+    <section class="final hidden" id="final">
+      <div class="final-card glass">
+        <div class="tiny-flower" aria-hidden="true">🌻</div>
+        <p class="eyebrow">Todavía falta algo</p>
+        <h2>Gracias por llegar a mi vida.</h2>
+        <p>
+          No sé cuántas flores voy a darte con el tiempo, pero espero que cada una te recuerde lo mucho que te quiero,
+          lo feliz que me hace compartir mi vida contigo y lo bonito que es encontrarte en mis días.
+        </p>
+        <p class="closing-line">Y todavía hay algo que quiero preguntarte… pero eso prefiero decírtelo mirándote a los ojos. ❤️</p>
+        <p class="signature">— Dani</p>
+        <button class="primary" id="replayBtn">Volver a florecer 🌻</button>
+      </div>
+    </section>
+
+    <div class="kiss-layer" id="kissLayer" aria-hidden="true"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

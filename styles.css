@@ -1,0 +1,425 @@
+:root {
+  --night: #06111f;
+  --night-2: #0a2036;
+  --blue: #1d466e;
+  --blue-soft: #2c6b94;
+  --gold: #ffd84d;
+  --gold-2: #ffb703;
+  --cream: #fff8da;
+  --white: #f9fbff;
+  --green: #2f7d4d;
+  --green-2: #5aa56f;
+  --glass: rgba(255,255,255,.10);
+  --glass-border: rgba(255,255,255,.18);
+  --shadow: 0 22px 70px rgba(0,0,0,.34);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; min-height: 100%; width: 100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--white);
+  background:
+    radial-gradient(circle at 18% 8%, rgba(47, 103, 159, .55), transparent 28%),
+    radial-gradient(circle at 82% 24%, rgba(20, 73, 119, .48), transparent 31%),
+    linear-gradient(180deg, #06111f 0%, #0a2035 52%, #102b3f 100%);
+  overflow-x: clip;
+}
+
+button { font: inherit; }
+.hidden { display: none !important; }
+.app { min-height: 100dvh; width: 100%; overflow-x: clip; }
+section {
+  width: 100%;
+  min-height: 100dvh;
+  padding: max(24px, env(safe-area-inset-top)) clamp(16px, 4vw, 32px) max(34px, env(safe-area-inset-bottom));
+  position: relative;
+}
+
+.hero, .final, .poem-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.sky-stars, .kiss-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff6b7;
+  box-shadow: 0 0 12px rgba(255,232,112,.9);
+  animation: twinkle var(--dur) ease-in-out infinite alternate;
+  opacity: var(--op);
+}
+@keyframes twinkle { to { transform: scale(1.85); opacity: 1; } }
+
+.moon {
+  position: absolute;
+  width: 160px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  right: -36px;
+  top: 8%;
+  background: radial-gradient(circle at 35% 35%, #fffbdc, #ffe78b 45%, #f3bd3d 70%);
+  box-shadow: 0 0 80px rgba(255,223,104,.33);
+  opacity: .73;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.07));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 28px;
+}
+
+.hero-card, .final-card, .poem-card, .section-card {
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+  padding: clamp(24px, 5vw, 32px) clamp(18px, 5vw, 26px);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.hero-card, .final-card { max-width: 560px; }
+
+.eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .24em;
+  font-size: .74rem;
+  opacity: .72;
+}
+
+h1, h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  margin: 0;
+  line-height: 1;
+  font-weight: 600;
+}
+h1 { font-size: clamp(4rem, 20vw, 7.2rem); }
+h2 { font-size: clamp(2.2rem, 9vw, 4.1rem); }
+
+.lead, .final-card p, .section-card p, .poem-card p {
+  line-height: 1.65;
+  opacity: .94;
+}
+.lead { margin: 22px auto 24px; max-width: 430px; }
+.soft { opacity: .72 !important; font-size: .92rem; }
+.hint { position: absolute; bottom: 24px; opacity: .55; font-size: .78rem; z-index: 2; }
+
+.primary, .secondary, .final-btn {
+  border: 0;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.primary:active, .secondary:active, .final-btn:active { transform: scale(.97); }
+.primary {
+  width: 100%;
+  border-radius: 18px;
+  padding: 15px 18px;
+  font-weight: 700;
+  color: #2c2400;
+  background: linear-gradient(135deg, #ffe97a, #ffbd1f);
+  box-shadow: 0 10px 30px rgba(255,190,24,.25);
+}
+.secondary, .final-btn {
+  padding: 13px 15px;
+  border-radius: 16px;
+  color: var(--white);
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.15);
+}
+.secondary:hover, .final-btn:hover { background: rgba(255,255,255,.16); }
+.final-btn { width: 100%; max-width: 620px; margin-inline: auto; }
+
+.garden, .memories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  padding-top: max(26px, env(safe-area-inset-top));
+}
+.garden > *, .memories > *, .poem-section > *, .final > *, .hero > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+.compact { width: 100%; max-width: 620px; padding: 19px; }
+.intro-card { z-index: 2; }
+.intro-card h2 { font-size: clamp(2rem, 9vw, 3.8rem); }
+.intro-card p { margin: 14px 0 0; }
+
+.bouquet-wrap {
+  width: 100%;
+  max-width: 760px;
+  height: 520px;
+  position: relative;
+  z-index: 1;
+  margin-inline: auto;
+  overflow: visible;
+}
+.bouquet-glow {
+  position: absolute;
+  width: 70%;
+  height: 46%;
+  left: 15%;
+  top: 9%;
+  background: radial-gradient(ellipse, rgba(255,208,50,.18), transparent 68%);
+  filter: blur(20px);
+}
+.flowers { position: absolute; inset: 0 3%; }
+
+.flower {
+  position: absolute;
+  left: var(--left);
+  bottom: 52px;
+  width: var(--bloom-size);
+  height: var(--height);
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(var(--tilt)) scaleY(0);
+  animation: grow 1.25s cubic-bezier(.2,.85,.25,1) forwards;
+  animation-delay: var(--delay);
+}
+@keyframes grow { to { transform: translateX(-50%) rotate(var(--tilt)) scaleY(1); } }
+.stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: var(--stem-width, 4px);
+  height: calc(100% - var(--bloom-size) * .72);
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #1c5e38, #3e9256, #1d653b);
+}
+.leaf {
+  position: absolute;
+  width: 45%;
+  height: 9%;
+  background: linear-gradient(135deg, #2b7245, #56a16a);
+  border-radius: 100% 0 100% 0;
+  bottom: var(--leaf-bottom);
+  left: 48%;
+  transform: rotate(var(--leaf-rot));
+  transform-origin: left center;
+  opacity: .94;
+}
+.leaf.left { left: 8%; transform: scaleX(-1) rotate(var(--leaf-rot)); }
+.bloom {
+  position: absolute;
+  width: var(--bloom-size);
+  height: var(--bloom-size);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(0) rotate(-10deg);
+  animation: bloom .82s cubic-bezier(.1,.8,.2,1.15) forwards;
+  animation-delay: calc(var(--delay) + .72s);
+}
+@keyframes bloom { to { transform: translateX(-50%) scale(1) rotate(0); } }
+
+/* girasol */
+.sunflower .petal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22%;
+  height: 48%;
+  margin-left: -11%;
+  margin-top: -45%;
+  border-radius: 50% 50% 48% 48%;
+  background: radial-gradient(circle at 50% 20%, #fff8a8, var(--petal) 56%, #e39b00 100%);
+  transform-origin: 50% 93%;
+  transform: rotate(var(--r));
+  box-shadow: inset 0 -4px 7px rgba(125,72,0,.15);
+}
+.sunflower .center {
+  position: absolute;
+  width: 34%; height: 34%;
+  border-radius: 50%;
+  left: 33%; top: 33%;
+  background:
+    radial-gradient(circle at 45% 40%, #8a5523 0 4%, transparent 5%),
+    radial-gradient(circle at 60% 55%, #9f682a 0 4%, transparent 5%),
+    radial-gradient(circle at 35% 65%, #704019 0 4%, transparent 5%),
+    radial-gradient(circle, #7a4819, #3b230e 72%);
+  box-shadow: 0 0 0 3px rgba(255,205,45,.20), 0 4px 12px rgba(0,0,0,.25);
+}
+
+/* margarita / cosmos */
+.daisy .petal {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 20%; height: 43%;
+  margin-left: -10%; margin-top: -40%;
+  border-radius: 70% 70% 55% 55%;
+  background: linear-gradient(180deg, var(--petal-light), var(--petal));
+  transform-origin: 50% 92%;
+  transform: rotate(var(--r));
+  box-shadow: inset 0 -2px 5px rgba(80,50,0,.10);
+}
+.daisy .center {
+  position: absolute;
+  width: 27%; height: 27%;
+  border-radius: 50%;
+  left: 36.5%; top: 36.5%;
+  background: radial-gradient(circle at 40% 35%, #fff6a1, #d9a514 75%);
+  box-shadow: 0 3px 8px rgba(0,0,0,.2);
+}
+
+/* florecitas silvestres */
+.spray .bloom { width: calc(var(--bloom-size) * 1.25); height: calc(var(--bloom-size) * 1.25); }
+.spray-dot {
+  position: absolute;
+  width: var(--dot); height: var(--dot);
+  border-radius: 50%;
+  background: var(--spray);
+  box-shadow: 0 0 0 2px rgba(255,255,255,.11), 0 3px 9px rgba(0,0,0,.14);
+}
+
+.ribbon {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  width: 190px;
+  height: 48px;
+  transform: translateX(-50%) rotate(-2deg);
+  z-index: 8;
+}
+.ribbon::before, .ribbon::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  width: 92px; height: 22px;
+  background: linear-gradient(135deg, #f8d85a, #c49a20);
+  opacity: .9;
+}
+.ribbon::before { left: 12px; transform: rotate(16deg); }
+.ribbon::after { right: 12px; transform: rotate(-16deg); }
+.ribbon span {
+  position: absolute;
+  width: 60px; height: 40px;
+  left: 65px; top: 3px;
+  border-radius: 50%;
+  border: 11px solid #e5bd37;
+  z-index: 2;
+}
+
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.message { text-align: center; line-height: 1.55; animation: pop .35s ease both; }
+@keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+
+.photo-grid {
+  width: 100%;
+  max-width: 920px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  justify-items: center;
+  gap: clamp(16px, 3vw, 24px);
+  padding: 8px 0 18px;
+}
+.photo-grid > * { width: 100%; max-width: 300px; }
+.polaroid {
+  margin: 0;
+  background: #f5f1e8;
+  padding: 10px 10px 18px;
+  color: #243044;
+  border-radius: 7px;
+  box-shadow: 0 18px 38px rgba(0,0,0,.28);
+  transition: transform .2s ease;
+}
+.polaroid:hover { transform: translateY(-4px) rotate(0deg); }
+.tilt-left { transform: rotate(-2.4deg); }
+.tilt-right { transform: rotate(2.1deg); }
+.tilt-left-small { transform: rotate(-1.2deg); }
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 3px;
+  display: block;
+  background: #d9d1c2;
+}
+.polaroid figcaption {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.1;
+  text-align: center;
+  padding: 13px 4px 0;
+  font-weight: 600;
+}
+
+.poem-section { gap: 20px; }
+.poem-card { text-align: left; }
+.poem-card .eyebrow, .poem-card h2, .poem-card .signature { text-align: center; }
+.poem-card h2 { font-size: clamp(2.3rem, 10vw, 4.4rem); margin-bottom: 24px; }
+.poem { position: relative; }
+.poem::before {
+  content: "“";
+  position: absolute;
+  left: -12px; top: -30px;
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  color: rgba(255,216,77,.22);
+}
+.poem p { margin: 0 0 18px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.25rem, 4.8vw, 1.58rem); line-height: 1.55; }
+.signature { margin-top: 24px; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.2rem; }
+.closing-line { color: var(--cream); font-weight: 600; }
+.tiny-flower { font-size: 2.1rem; margin-bottom: 6px; }
+
+.kiss {
+  position: absolute;
+  left: var(--x);
+  bottom: -40px;
+  font-size: 24px;
+  animation: fly 2.9s cubic-bezier(.15,.72,.18,1) forwards;
+  transform: translateX(0) rotate(0deg);
+}
+@keyframes fly {
+  45% { opacity: 1; }
+  100% { transform: translate(var(--dx), -108vh) rotate(var(--rot)); opacity: 0; }
+}
+
+@media (max-width: 760px) {
+  section { padding-left: 16px; padding-right: 16px; }
+  .photo-grid { grid-template-columns: 1fr; max-width: 390px; gap: 26px; }
+  .photo-grid > * { max-width: 360px; }
+  .bouquet-wrap { height: 460px; max-width: 520px; }
+  .flowers { left: 2%; right: 2%; }
+  .actions { grid-template-columns: 1fr; }
+  .polaroid { padding: 9px 9px 17px; }
+  .moon { width: 132px; right: -42px; top: 5%; }
+  .hint { width: calc(100% - 32px); text-align: center; }
+}
+
+@media (max-width: 420px) {
+  section { padding-left: 14px; padding-right: 14px; }
+  .glass { border-radius: 24px; }
+  .hero-card, .final-card, .poem-card, .section-card { padding: 24px 18px; }
+  .compact { padding: 16px; }
+  .bouquet-wrap { height: 420px; }
+  .ribbon { transform: translateX(-50%) rotate(-2deg) scale(.82); bottom: 32px; }
+  .flower { bottom: 44px; }
+  h1 { font-size: clamp(3.4rem, 20vw, 5rem); }
+  h2 { font-size: clamp(2rem, 11vw, 3.2rem); }
+  .poem p { font-size: 1.18rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
